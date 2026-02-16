@@ -191,6 +191,7 @@ import React, { useState, useEffect } from "react";
 interface NavbarProps {
   onNavigate: (view: "home" | "collections" | "auth" | "philosophy") => void;
   onSearchOpen: () => void;
+  isHomePage?: boolean;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
@@ -212,6 +213,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const updateCartCount = () => {
+      if (typeof window === "undefined") return;
       const savedCart = localStorage.getItem("rhemar_cart");
       if (savedCart) {
         try {
@@ -228,14 +230,18 @@ const Navbar: React.FC<NavbarProps> = ({
     updateCartCount();
 
     // Listen for storage changes
-    window.addEventListener("storage", updateCartCount);
+    if (typeof window !== "undefined") {
+      window.addEventListener("storage", updateCartCount);
 
-    // Custom event for same-tab updates
-    window.addEventListener("cartUpdated", updateCartCount);
+      // Custom event for same-tab updates
+      window.addEventListener("cartUpdated", updateCartCount);
+    }
 
     return () => {
-      window.removeEventListener("storage", updateCartCount);
-      window.removeEventListener("cartUpdated", updateCartCount);
+      if (typeof window !== "undefined") {
+        window.removeEventListener("storage", updateCartCount);
+        window.removeEventListener("cartUpdated", updateCartCount);
+      }
     };
   }, []);
   const handleLinkClick = () => {

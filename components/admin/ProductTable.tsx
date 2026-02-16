@@ -42,7 +42,7 @@ export default function ProductTable() {
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [imagePreview, setImagePreview] = useState<string[]>([]);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isCategoriesLoading, setIsCategoriesLoading] = useState(true);
 
@@ -223,7 +223,7 @@ export default function ProductTable() {
         previews.push(reader.result as string);
 
         if (previews.length === files.length) {
-          setImagePreview(previews);
+          setImagePreview(previews[0] || null);
         }
       };
       reader.readAsDataURL(file);

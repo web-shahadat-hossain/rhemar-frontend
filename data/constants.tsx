@@ -1,5 +1,6 @@
 import React from "react";
-import { Product, Collection, Benefit } from "./types";
+import { Product } from "@/types/types";
+import { Collection, Benefit } from "./types";
 import { Category } from "@/types/types";
 
 export const COLLECTIONS: Collection[] = [
@@ -48,16 +49,18 @@ export const COLLECTIONS: Collection[] = [
 ];
 export const PRODUCTS: Product[] = [
   {
-    id: "1",
+    _id: "1",
     name: "Premium Silk Panjabi - Royal Navy",
+    slug: "premium-silk-panjabi-royal-navy",
+    createdAt: "2024-01-01T00:00:00Z",
     category: "Panjabi",
     price: 4500,
     discountPrice: 3800,
     description:
       "A masterpiece of craftsmanship, this royal navy silk panjabi features intricate embroidery on the collar and cuffs. Perfect for Eid and weddings.",
     images: [
-      "https://picsum.photos/seed/panjabi1/800/1000",
-      "https://picsum.photos/seed/panjabi1-2/800/1000",
+      { url: "https://picsum.photos/seed/panjabi1/800/1000" },
+      { url: "https://picsum.photos/seed/panjabi1-2/800/1000" },
     ],
     sizes: [
       { size: "S", stock: 5 },
@@ -68,14 +71,16 @@ export const PRODUCTS: Product[] = [
     isFeatured: true,
   },
   {
-    id: "2",
+    _id: "2",
     name: "Essential White Cotton Polo",
+    slug: "essential-white-cotton-polo",
+    createdAt: "2024-01-01T00:00:00Z",
     category: "Polo",
     price: 1800,
     discountPrice: 1550,
     description:
       "Breathes comfort. Our classic polo is made from high-grade Pima cotton, offering durability and a premium feel.",
-    images: ["https://picsum.photos/seed/polo1/800/1000"],
+    images: [{ url: "https://picsum.photos/seed/polo1/800/1000" }],
     sizes: [
       { size: "S", stock: 20 },
       { size: "M", stock: 15 },
@@ -85,13 +90,15 @@ export const PRODUCTS: Product[] = [
     isFeatured: true,
   },
   {
-    id: "3",
+    _id: "3",
     name: "Urban Slim-Fit Chinos - Charcoal",
+    slug: "urban-slim-fit-chinos-charcoal",
+    createdAt: "2024-01-01T00:00:00Z",
     category: "Pant & Trouser",
     price: 2500,
     description:
       "Versatile chinos that transition from office to evening. Features a slightly tapered fit and premium stretch fabric.",
-    images: ["https://picsum.photos/seed/pant1/800/1000"],
+    images: [{ url: "https://picsum.photos/seed/pant1/800/1000" }],
     sizes: [
       { size: "S", stock: 5 },
       { size: "M", stock: 10 },
@@ -101,14 +108,16 @@ export const PRODUCTS: Product[] = [
     isFeatured: true,
   },
   {
-    id: "4",
+    _id: "4",
     name: "Midnight Black Bomber Jacket",
+    slug: "midnight-black-bomber-jacket",
+    createdAt: "2024-01-01T00:00:00Z",
     category: "Jacket",
     price: 5500,
     discountPrice: 4200,
     description:
       "A winter essential. Water-resistant outer shell with a soft quilted interior. Clean, minimalist aesthetic.",
-    images: ["https://picsum.photos/seed/jacket1/800/1000"],
+    images: [{ url: "https://picsum.photos/seed/jacket1/800/1000" }],
     sizes: [
       { size: "S", stock: 2 },
       { size: "M", stock: 5 },
@@ -118,13 +127,15 @@ export const PRODUCTS: Product[] = [
     isFeatured: true,
   },
   {
-    id: "5",
+    _id: "5",
     name: "Classic White Sneakers",
+    slug: "classic-white-sneakers",
+    createdAt: "2024-01-01T00:00:00Z",
     category: "Sneakers",
     price: 3200,
     description:
       "Handcrafted leather sneakers with a cushioned sole for all-day comfort. The ultimate versatile footwear.",
-    images: ["https://picsum.photos/seed/sneaker1/800/1000"],
+    images: [{ url: "https://picsum.photos/seed/sneaker1/800/1000" }],
     sizes: [
       { size: "S", stock: 8 },
       { size: "M", stock: 6 },
@@ -134,14 +145,16 @@ export const PRODUCTS: Product[] = [
     isFeatured: true,
   },
   {
-    id: "6",
+    _id: "6",
     name: "Signature Logo T-Shirt",
+    slug: "signature-logo-t-shirt",
+    createdAt: "2024-01-01T00:00:00Z",
     category: "T-Shirt",
     price: 1200,
     discountPrice: 950,
     description:
       "Simple, iconic, and comfortable. Our signature logo tee is a staple for every wardrobe.",
-    images: ["https://picsum.photos/seed/tshirt1/800/1000"],
+    images: [{ url: "https://picsum.photos/seed/tshirt1/800/1000" }],
     sizes: [
       { size: "S", stock: 50 },
       { size: "M", stock: 40 },
@@ -154,37 +167,56 @@ export const PRODUCTS: Product[] = [
 
 export const FEATURED_PRODUCTS: Product[] = [
   {
-    id: "p1",
+    _id: "p1",
     name: "Signature Silk Panjabi",
-    price: "৳ 12,500",
+    slug: "signature-silk-panjabi",
+    createdAt: "2024-01-01T00:00:00Z",
+    price: 12500,
     category: "Panjabi",
-    image:
-      "https://img.drz.lazcdn.com/g/kf/S83554d0744f547d88167d400b274c2e8C.jpg_720x720q80.jpg",
-    isSignature: true,
+    images: [
+      {
+        url: "https://img.drz.lazcdn.com/g/kf/S83554d0744f547d88167d400b274c2e8C.jpg_720x720q80.jpg",
+      },
+    ],
+    isFeatured: true,
   },
   {
-    id: "p2",
+    _id: "p2",
     name: "Royal Pique Polo",
-    price: "৳ 3,200",
+    slug: "royal-pique-polo",
+    createdAt: "2024-01-01T00:00:00Z",
+    price: 3200,
     category: "Polo",
-    image:
-      "https://i0.wp.com/peallifestyle.com/wp-content/uploads/2024/03/whtie-kcp-3.jpg?fit=2001%2C3000&ssl=1",
+    images: [
+      {
+        url: "https://i0.wp.com/peallifestyle.com/wp-content/uploads/2024/03/whtie-kcp-3.jpg?fit=2001%2C3000&ssl=1",
+      },
+    ],
   },
   {
-    id: "p3",
+    _id: "p3",
     name: "Midnight Slim Trousers",
-    price: "৳ 4,500",
+    slug: "midnight-slim-trousers",
+    createdAt: "2024-01-01T00:00:00Z",
+    price: 4500,
     category: "Pant",
-    image: "https://aaron.clothing/wp-content/uploads/2024/03/merp1205.jpg",
+    images: [
+      { url: "https://aaron.clothing/wp-content/uploads/2024/03/merp1205.jpg" },
+    ],
   },
   {
-    id: "p4",
+    _id: "p4",
     name: "Artisan Suede Jacket",
-    price: "৳ 18,900",
+    slug: "artisan-suede-jacket",
+    createdAt: "2024-01-01T00:00:00Z",
+    price: 18900,
     category: "Jacket",
-    image:
-      "https://blucheez.fashion/cdn/shop/files/126_ef2c4ebc-b9d6-46f6-8701-3f61b7925c9b.webp?v=1748774586&width=600",
-    isSignature: true,
+    images: [
+      {
+        url: "https://blucheez.fashion/cdn/shop/files/126_ef2c4ebc-b9d6-46f6-8701-3f61b7925c9b.webp?v=1748774586&width=600",
+      },
+    ],
+    isFeatured: true,
   },
 ];
 

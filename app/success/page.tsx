@@ -17,7 +17,7 @@ export default function SuccessPage({ orderId }: SuccessPageProps) {
 
   // Get order details from localStorage if not passed as props
   useEffect(() => {
-    if (!displayOrderId) {
+    if (!displayOrderId && typeof window !== "undefined") {
       const savedOrders = localStorage.getItem("rhemar_orders");
       if (savedOrders) {
         try {

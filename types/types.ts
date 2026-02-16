@@ -21,6 +21,9 @@ export interface Product {
   discountPrice?: number;
   images: { url: string }[];
   createdAt: string;
+  sizes?: SizeStock[];
+  isFeatured?: boolean;
+  description?: string;
 }
 
 export interface ShopProps {

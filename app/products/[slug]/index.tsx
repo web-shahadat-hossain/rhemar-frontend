@@ -36,8 +36,8 @@ export default function ProductDetailPage(props: any) {
   }
 
   const currentSizeStock =
-    product.sizes.find((s) => s.size === selectedSize)?.stock || 0;
-  const isOutOfStock = product.sizes.every((s) => s.stock === 0);
+    product.sizes.find((s: SizeStock) => s.size === selectedSize)?.stock || 0;
+  const isOutOfStock = product.sizes.every((s: SizeStock) => s.stock === 0);
 
   const handleAddToCart = () => {
     if (!selectedSize) return;
@@ -76,22 +76,24 @@ export default function ProductDetailPage(props: any) {
             />
           </div>
           <div className="flex gap-4 overflow-x-auto pb-2">
-            {product.images.map((img, idx) => {
-              const src = typeof img === "string" ? img : img?.url;
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setActiveImage(src)}
-                  className={`w-24 h-32 shrink-0 rounded-xl overflow-hidden border-2 transition-all ${activeImage === src ? "border-[#d4af37]" : "border-transparent"}`}
-                >
-                  <img
-                    src={src}
-                    alt={`${product.name} ${idx}`}
-                    className="w-full h-full object-cover"
-                  />
-                </button>
-              );
-            })}
+            {product.images.map(
+              (img: string | { url: string }, idx: number) => {
+                const src = typeof img === "string" ? img : img?.url;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveImage(src)}
+                    className={`w-24 h-32 shrink-0 rounded-xl overflow-hidden border-2 transition-all ${activeImage === src ? "border-[#d4af37]" : "border-transparent"}`}
+                  >
+                    <img
+                      src={src}
+                      alt={`${product.name} ${idx}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                );
+              },
+            )}
           </div>
         </div>
 

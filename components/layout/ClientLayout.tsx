@@ -30,7 +30,7 @@ export default function ClientLayout({
     pathname?.startsWith("/estimates");
 
   const hideLayout = hiddenRoutes.includes(pathname) || isDashboard;
-  type View = "home" | "collections" | "auth";
+  type View = "home" | "collections" | "auth" | "philosophy";
   const hideFooter = hiddenFooter.includes(pathname);
   const [currentView, setCurrentView] = useState<View>("home");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
