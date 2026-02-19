@@ -254,28 +254,13 @@ const Navbar: React.FC<NavbarProps> = ({
           isHomePage
             ? scrolled
               ? "bg-primary/95 backdrop-blur-md py-4 border-accent/20"
-              : "bg-transparent py-6 border-transparent"
+              : // : "bg-transparent py-6 border-transparent"
+                "bg-primary/95 backdrop-blur-md py-4 border-accent/20"
             : "bg-primary/95 backdrop-blur-md py-4 border-accent/20"
         }`}
       >
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex space-x-8">
-            <Link
-              href={"/products"}
-              className="text-sm tracking-[0.2em] uppercase hover:text-accent transition-colors"
-            >
-              Collections
-            </Link>
-            <Link
-              href={"philosophy"}
-              className="text-sm tracking-[0.2em] uppercase hover:text-accent transition-colors"
-            >
-              Philosophy
-            </Link>
-          </div>
-
-          {/* Logo */}
           <Link href={"/"} className="flex flex-col items-center group">
             <h1 className="text-2xl md:text-3xl font-heading font-bold tracking-widest text-accent group-hover:text-white transition-colors">
               RHEMAR
@@ -284,6 +269,28 @@ const Navbar: React.FC<NavbarProps> = ({
               Signature
             </span>
           </Link>
+          <div className="hidden lg:flex space-x-8">
+            <Link
+              href={"/products"}
+              className="text-sm tracking-[0.2em] uppercase hover:text-accent transition-colors"
+            >
+              Collections
+            </Link>
+            <Link
+              href={"/products"}
+              className="text-sm tracking-[0.2em] uppercase spotlight-text"
+            >
+              Eid Exclusive 2026
+            </Link>
+            <Link
+              href={"/customer-spotlight"}
+              className="text-sm tracking-[0.2em] uppercase hover:text-accent transition-colors"
+            >
+              Customer Spotlight
+            </Link>
+          </div>
+
+          {/* Logo */}
 
           {/* Icons & Mobile Toggle */}
           <div className="flex items-center space-x-4 md:space-x-6">

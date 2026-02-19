@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Hero: React.FC = () => {
@@ -55,12 +56,18 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up opacity-0"
             style={{ animationDelay: "1.1s" }}
           >
-            <button className="bg-accent text-primary px-10 py-4 font-bold tracking-widest uppercase text-sm hover:bg-white transition-all duration-300 transform hover:-translate-y-1">
+            <Link
+              href={"/products"}
+              className="bg-accent text-primary px-10 py-4 font-bold tracking-widest uppercase text-sm hover:bg-white transition-all duration-300 transform hover:-translate-y-1"
+            >
               Shop Collection
-            </button>
-            <button className="border border-white/30 text-white px-10 py-4 font-bold tracking-widest uppercase text-sm hover:border-accent hover:text-accent transition-all duration-300 transform hover:-translate-y-1">
+            </Link>
+            <Link
+              href={"/philosophy"}
+              className="border border-white/30 text-white px-10 py-4 font-bold tracking-widest uppercase text-sm hover:border-accent hover:text-accent transition-all duration-300 transform hover:-translate-y-1"
+            >
               Explore Signature
-            </button>
+            </Link>
           </div>
         </div>
       </div>

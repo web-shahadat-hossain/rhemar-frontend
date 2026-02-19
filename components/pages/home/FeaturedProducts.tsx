@@ -29,7 +29,7 @@ const FeaturedProducts: React.FC = () => {
           (a: Product, b: Product) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         )
-        .slice(0, 4);
+        .slice(0, 20);
 
       setProducts(latestFour);
     } catch (err) {

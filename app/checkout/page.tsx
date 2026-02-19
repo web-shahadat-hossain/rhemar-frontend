@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { api } from "@/lib/services/api";
-
+import { useRef } from "react";
 interface CheckoutPageProps {
   params?: Record<string, string>;
   searchParams?: Record<string, string>;
@@ -21,6 +21,40 @@ export default function CheckoutPage({}: CheckoutPageProps) {
   const router = useRouter();
   const { cartItems, clearCart } = useCart();
 
+  const hasFiredCheckout = useRef(false);
+
+  useEffect(() => {
+    if (hasFiredCheckout.current) return;
+    if (cartItems.length === 0) return;
+
+    hasFiredCheckout.current = true;
+
+    const eventId = crypto.randomUUID();
+
+    // Browser Pixel
+    window.fbq?.(
+      "track",
+      "InitiateCheckout",
+      {
+        value: total,
+        currency: "BDT",
+      },
+      { eventID: eventId },
+    );
+
+    // Server Event
+    fetch("/api/meta", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event_name: "InitiateCheckout",
+        event_id: eventId,
+        value: total,
+        userAgent: navigator.userAgent,
+        url: window.location.href,
+      }),
+    });
+  }, []);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -108,6 +142,47 @@ export default function CheckoutPage({}: CheckoutPageProps) {
         body: JSON.stringify(orderData),
       });
 
+      // 🔥 🔥 🔥 PURCHASE EVENT এখানেই বসাবে
+
+      const eventId = crypto.randomUUID();
+
+      // Browser Purchase
+      window.fbq?.(
+        "track",
+        "Purchase",
+        {
+          value: total,
+          currency: "BDT",
+        },
+        { eventID: eventId },
+      );
+
+      // Server Purchase
+      fetch("/api/meta", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          event_name: "Purchase",
+          event_id: eventId,
+          value: total,
+
+          email: formData.email,
+          phone: formData.phone,
+          name: formData.name,
+          city: formData.city,
+
+          contents: cartItems.map((item) => ({
+            id: item._id,
+            quantity: item.quantity,
+            item_price: item.discountPrice || item.price,
+          })),
+
+          userAgent: navigator.userAgent,
+          url: window.location.href,
+        }),
+      });
+
+      // তারপর cart clear করবে
       clearCart();
       setOrderId(data._id);
       setIsOrdered(true);
@@ -117,6 +192,7 @@ export default function CheckoutPage({}: CheckoutPageProps) {
       setIsLoading(false);
     }
   };
+
   if (isLoading) {
     return (
       <div className="max-w-7xl mx-auto px-4 md:px-8 py-20 text-center pt-32">

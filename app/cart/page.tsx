@@ -1,6 +1,13 @@
 "use client";
+// Extend window interface for fbq
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
+
 import { useRouter } from "next/navigation";
 import {
   Trash2,
@@ -30,6 +37,39 @@ export default function CartPage() {
     0,
     FREE_DELIVERY_THRESHOLD - subtotal,
   );
+  const hasFired = useRef(false);
+  useEffect(() => {
+    if (hasFired.current) return;
+    if (cartItems.length === 0) return;
+
+    hasFired.current = true;
+
+    const eventId = crypto.randomUUID();
+
+    // Browser Pixel
+    window.fbq?.(
+      "track",
+      "ViewCart",
+      {
+        value: subtotal,
+        currency: "BDT",
+      },
+      { eventID: eventId },
+    );
+
+    // Server Event
+    fetch("/api/meta", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        event_name: "ViewCart",
+        event_id: eventId,
+        value: subtotal,
+        userAgent: navigator.userAgent,
+        url: window.location.href,
+      }),
+    });
+  }, [cartItems]);
 
   if (cartItems.length === 0) {
     return (
@@ -195,7 +235,35 @@ export default function CartPage() {
               </div>
 
               <button
-                onClick={() => router.push("/checkout")}
+                onClick={() => {
+                  const eventId = crypto.randomUUID();
+
+                  // Browser Pixel
+                  window.fbq?.(
+                    "track",
+                    "InitiateCheckout",
+                    {
+                      value: total,
+                      currency: "BDT",
+                    },
+                    { eventID: eventId },
+                  );
+
+                  // Server Event
+                  fetch("/api/meta", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      event_name: "InitiateCheckout",
+                      event_id: eventId,
+                      value: total,
+                      userAgent: navigator.userAgent,
+                      url: window.location.href,
+                    }),
+                  });
+
+                  router.push("/checkout");
+                }}
                 className="w-full bg-black text-white py-4 rounded-2xl font-bold uppercase tracking-[0.2em] hover:bg-[#d4af37] hover:text-black transition-all"
               >
                 Proceed to Checkout

@@ -11,7 +11,7 @@ const PhilosophyView: React.FC<PhilosophyViewProps> = ({ onBack }) => {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden border-b border-accent/10">
         <div className="absolute inset-0 grayscale opacity-40">
           <img
-            src="https://images.unsplash.com/photo-1558227108-83a15ddbbb15?auto=format&fit=crop&q=80&w=1920"
+            src="https://res.cloudinary.com/dbbce9j2m/image/upload/v1771237983/indian-man-wear-traditional-clothes-with-white-scarf-posed-outdoor_calbo1.jpg"
             alt="Artisan Craftsmanship"
             className="w-full h-full object-cover animate-soft-zoom"
           />
@@ -88,7 +88,8 @@ const PhilosophyView: React.FC<PhilosophyViewProps> = ({ onBack }) => {
             </div>
             <div className="relative order-1 lg:order-2">
               <img
-                src="https://images.unsplash.com/photo-1594932224828-b4b059b6ff0f?auto=format&fit=crop&q=80&w=800"
+                /* Close-up high quality fabric/suit detail */
+                src="https://res.cloudinary.com/dbbce9j2m/image/upload/v1771238462/kaziminmizan-man-7967210_1280_fnu3p7.jpg"
                 alt="Suit Detail"
                 className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000 shadow-2xl"
               />

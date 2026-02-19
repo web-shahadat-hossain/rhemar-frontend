@@ -1,4 +1,11 @@
+import Link from "next/link";
 import React from "react";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 const Footer: React.FC = () => {
   return (
@@ -19,17 +26,31 @@ const Footer: React.FC = () => {
               on uncompromising quality and timeless aesthetics.
             </p>
             <div className="flex space-x-4">
-              {["facebook", "instagram", "twitter"].map((social) => (
+              <div className="flex space-x-4">
                 <a
-                  key={social}
-                  href="#"
-                  className="w-10 h-10 border border-accent/30 flex items-center justify-center rounded-full hover:border-accent hover:text-accent transition-colors"
+                  href="https://www.facebook.com/rhemarsignature"
+                  target="_blank"
+                  className="w-10 h-10 border border-accent/30 flex items-center justify-center rounded-full hover:border-accent hover:text-accent transition-all duration-300"
                 >
-                  <span className="sr-only">{social}</span>
-                  <div className="w-4 h-4 bg-current opacity-70"></div>{" "}
-                  {/* Placeholder icon */}
+                  <FaFacebookF size={14} />
                 </a>
-              ))}
+
+                <a
+                  href="https://www.instagram.com/rhemarsignature/"
+                  target="_blank"
+                  className="w-10 h-10 border border-accent/30 flex items-center justify-center rounded-full hover:border-accent hover:text-accent transition-all duration-300"
+                >
+                  <FaInstagram size={14} />
+                </a>
+
+                <a
+                  href="https://www.tiktok.com/@rhemarsignature"
+                  target="_blank"
+                  className="w-10 h-10 border border-accent/30 flex items-center justify-center rounded-full hover:border-accent hover:text-accent transition-all duration-300"
+                >
+                  <FaTiktok size={14} />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -39,29 +60,44 @@ const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-4 text-sm">
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/products"
+                  className="hover:text-accent transition-colors"
+                >
                   Panjabi Collection
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/products"
+                  className="hover:text-accent transition-colors"
+                >
                   Executive Polos
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/products"
+                  className="hover:text-accent transition-colors"
+                >
                   Premium Outerwear
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/products"
+                  className="hover:text-accent transition-colors"
+                >
                   Artisan Footwear
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/products"
+                  className="hover:text-accent transition-colors"
+                >
                   Signature Combos
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -72,29 +108,44 @@ const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-4 text-sm">
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/philosophy"
+                  className="hover:text-accent transition-colors"
+                >
                   Our Story
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/shipping-returns"
+                  className="hover:text-accent transition-colors"
+                >
                   Shipping & Returns
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <a
+                  href="/care-guide"
+                  className="hover:text-accent transition-colors"
+                >
                   Care Guide
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/privacy-policy"
+                  className="hover:text-accent transition-colors"
+                >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-accent transition-colors">
+                <Link
+                  href="/terms-service"
+                  className="hover:text-accent transition-colors"
+                >
                   Terms of Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
