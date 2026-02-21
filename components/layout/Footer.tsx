@@ -107,14 +107,14 @@ const Footer: React.FC = () => {
               Information
             </h4>
             <ul className="space-y-4 text-sm">
-              <li>
+              {/* <li>
                 <Link
                   href="/philosophy"
                   className="hover:text-accent transition-colors"
                 >
                   Our Story
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/shipping-returns"
@@ -123,14 +123,14 @@ const Footer: React.FC = () => {
                   Shipping & Returns
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="/care-guide"
                   className="hover:text-accent transition-colors"
                 >
                   Care Guide
                 </a>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/privacy-policy"
