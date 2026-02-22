@@ -123,7 +123,7 @@ const Hero: React.FC = () => {
 
           {/* Main Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif text-white leading-tight mb-6">
-            FALL FROM HEAVEN
+            Confidence in Simplicity
           </h1>
 
           {/* Sub Line */}

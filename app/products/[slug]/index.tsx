@@ -10,6 +10,10 @@ import {
   Share2,
   Plus,
   Minus,
+  Facebook,
+  Instagram,
+  Music2,
+  Youtube,
 } from "lucide-react";
 import { CartItem, SizeStock } from "@/types/types";
 import { useCart } from "@/context/CartContext";
@@ -258,7 +262,7 @@ export default function ProductDetailPage(props: any) {
           </div>
 
           {/* Secondary Actions */}
-          <div className="flex gap-4 mb-10">
+          {/* <div className="flex gap-4 mb-10">
             <button className="flex-1 bg-white text-black border border-gray-100 py-4 rounded-2xl hover:bg-gray-50 transition-all flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest group">
               <Heart
                 size={18}
@@ -269,7 +273,74 @@ export default function ProductDetailPage(props: any) {
             <button className="flex-1 bg-white text-black border border-gray-100 py-4 rounded-2xl hover:bg-gray-50 transition-all flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest">
               <Share2 size={18} /> Share Product
             </button>
-          </div>
+          </div> */}
+          {/* Social Media Links */}
+          {product.socialLinks &&
+            Object.values(product.socialLinks).some((link) => link) && (
+              <div className="mt-6 border-b border-gray-100  mb-10 pb-5">
+                <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-semibold text-center mb-10 ">
+                  Discover More
+                </p>
+
+                <div className="flex justify-center gap-6">
+                  {product.socialLinks.facebook && (
+                    <a
+                      href={product.socialLinks.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-[#1877F2] hover:bg-[#1877F2] transition-all duration-300"
+                    >
+                      <Facebook
+                        size={20}
+                        className="text-gray-600 group-hover:text-white transition-colors"
+                      />
+                    </a>
+                  )}
+
+                  {product.socialLinks.instagram && (
+                    <a
+                      href={product.socialLinks.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-pink-500 hover:bg-pink-500 transition-all duration-300"
+                    >
+                      <Instagram
+                        size={20}
+                        className="text-gray-600 group-hover:text-white transition-colors"
+                      />
+                    </a>
+                  )}
+
+                  {product.socialLinks.tiktok && (
+                    <a
+                      href={product.socialLinks.tiktok}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-black hover:bg-black transition-all duration-300"
+                    >
+                      <Music2
+                        size={20}
+                        className="text-gray-600 group-hover:text-white transition-colors"
+                      />
+                    </a>
+                  )}
+
+                  {product.socialLinks.youtube && (
+                    <a
+                      href={product.socialLinks.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-red-600 hover:bg-red-600 transition-all duration-300"
+                    >
+                      <Youtube
+                        size={20}
+                        className="text-gray-600 group-hover:text-white transition-colors"
+                      />
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
 
           {/* Value Props */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 py-8 border-t border-gray-100">

@@ -778,6 +778,12 @@ interface Product {
   featured: boolean;
   sizes: { size: string; stock: number }[];
   images: { url: string; public_id?: string }[];
+  socialLinks?: {
+    facebook?: string;
+    instagram?: string;
+    tiktok?: string;
+    youtube?: string;
+  };
 }
 
 interface Category {
@@ -919,6 +925,25 @@ export default function ProductTable() {
       (form.elements.namedItem("description") as HTMLTextAreaElement).value,
     );
 
+    formData.append(
+      "facebook",
+      (form.elements.namedItem("facebook") as HTMLInputElement)?.value || "",
+    );
+
+    formData.append(
+      "instagram",
+      (form.elements.namedItem("instagram") as HTMLInputElement)?.value || "",
+    );
+
+    formData.append(
+      "tiktok",
+      (form.elements.namedItem("tiktok") as HTMLInputElement)?.value || "",
+    );
+
+    formData.append(
+      "youtube",
+      (form.elements.namedItem("youtube") as HTMLInputElement)?.value || "",
+    );
     ["S", "M", "L", "XL"].forEach((size, i) => {
       const stock = (
         form.elements.namedItem(`stock-${size}`) as HTMLInputElement
@@ -1570,7 +1595,42 @@ export default function ProductTable() {
                   ))}
                 </div>
               </div>
+              {/* Social Links */}
+              <div className="space-y-4">
+                <label className="text-sm font-medium text-gray-700">
+                  Social Media Links (Optional)
+                </label>
 
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <input
+                    name="facebook"
+                    defaultValue={editingProduct?.socialLinks?.facebook}
+                    placeholder="Facebook URL"
+                    className="w-full border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+                  />
+
+                  <input
+                    name="instagram"
+                    defaultValue={editingProduct?.socialLinks?.instagram}
+                    placeholder="Instagram URL"
+                    className="w-full border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+                  />
+
+                  <input
+                    name="tiktok"
+                    defaultValue={editingProduct?.socialLinks?.tiktok}
+                    placeholder="TikTok URL"
+                    className="w-full border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+                  />
+
+                  <input
+                    name="youtube"
+                    defaultValue={editingProduct?.socialLinks?.youtube}
+                    placeholder="YouTube URL"
+                    className="w-full border border-gray-200 rounded-xl p-3 focus:outline-none focus:ring-2 focus:ring-gray-900/20"
+                  />
+                </div>
+              </div>
               {/* Submit */}
               <div className="sticky bottom-0 bg-white pt-4 border-t border-gray-100">
                 <button

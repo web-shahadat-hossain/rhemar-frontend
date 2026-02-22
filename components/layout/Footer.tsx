@@ -22,8 +22,8 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <p className="text-sm leading-relaxed mb-8 max-w-xs">
-              Defining the modern wardrobe for the global gentleman with a focus
-              on uncompromising quality and timeless aesthetics.
+              Rhemar is a statement of self. Not flawless. Not loud. Just real.
+              Chosen by those who lead with character.
             </p>
             <div className="flex space-x-4">
               <div className="flex space-x-4">
