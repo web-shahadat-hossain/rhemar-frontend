@@ -277,7 +277,7 @@ const Navbar: React.FC<NavbarProps> = ({
               Collections
             </Link>
             <Link
-              href={"/products"}
+              href={"/eid-exclusive"}
               className="text-sm tracking-[0.2em] uppercase spotlight-text"
             >
               Eid Exclusive 2026

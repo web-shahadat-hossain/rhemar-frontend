@@ -283,6 +283,8 @@ interface ShopProps {
   initialSearch?: string;
   categories: string[];
   products: Product[];
+  title?: string;
+  description?: string;
 }
 
 const Shop: React.FC<ShopProps> = ({
@@ -291,6 +293,8 @@ const Shop: React.FC<ShopProps> = ({
   initialSearch,
   categories,
   products,
+  title = "The Collection",
+  description = "Refinement in every thread, luxury in every detail.",
 }) => {
   const [selectedCategory, setSelectedCategory] = useState(
     initialCategory || "All",
@@ -353,8 +357,13 @@ const Shop: React.FC<ShopProps> = ({
       {/* Page Header */}
       <div className="text-center mb-16 space-y-4">
         <h1 className="text-4xl md:text-5xl font-heading font-medium tracking-tight">
-          The Collection
+          {title}
         </h1>
+        {description && (
+          <p className="text-gray-400 max-w-2xl mx-auto italic font-serif-luxury text-xl">
+            {description}
+          </p>
+        )}
         {searchTerm ? (
           <div className="flex items-center justify-center gap-4 text-gold">
             <span className="text-sm font-bold uppercase tracking-[0.4em]">
@@ -372,9 +381,7 @@ const Shop: React.FC<ShopProps> = ({
             </button>
           </div>
         ) : (
-          <p className="text-gray-400 max-w-2xl mx-auto italic font-serif-luxury text-xl">
-            "Refinement in every thread, luxury in every detail."
-          </p>
+          <p className="text-gray-400 max-w-2xl mx-auto italic font-serif-luxury text-xl"></p>
         )}
       </div>
 

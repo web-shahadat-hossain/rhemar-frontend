@@ -74,6 +74,7 @@ export default function Sidebar() {
         {navItem(<ShoppingBag size={18} />, "Products", "/admin/products")}
         {navItem(<Truck size={18} />, "Orders", "/admin/orders")}
         {navItem(<Users size={18} />, "Users", "/admin/users")}
+        {navItem(<Users size={18} />, "Promo Code ", "/admin/promocode")}
       </nav>
 
       <div className="pt-10 border-t border-white/5">

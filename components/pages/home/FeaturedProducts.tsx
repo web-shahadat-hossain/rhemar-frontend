@@ -57,7 +57,10 @@ const FeaturedProducts: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {products.map((product) => (
             <div key={product._id} className="group flex flex-col">
-              <div className="relative overflow-hidden bg-white aspect-[3/4]">
+              <Link
+                href={`/products/${product.slug}`}
+                className="relative overflow-hidden bg-white aspect-[3/4]"
+              >
                 {product.featured && (
                   <div className="absolute top-4 left-4 z-10 bg-accent text-white px-3 py-1 text-[10px] uppercase tracking-widest font-bold">
                     Signature Pick
@@ -95,7 +98,7 @@ const FeaturedProducts: React.FC = () => {
                     </svg>
                   </Link>
                 </div>
-              </div>
+              </Link>
 
               <Link
                 href={`/products/${product.slug}`}
